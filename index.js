@@ -24,5 +24,6 @@ module.exports = function (stream, method, callback) {
     hasher.removeListener('error', finish)
     hasher.removeListener('readable', onReadable)
     callback(err, hash)
+    stream = hasher = null
   }
 }
