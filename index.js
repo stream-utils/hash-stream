@@ -6,14 +6,12 @@ module.exports = function (stream, method, callback) {
     stream = fs.createReadStream(stream)
 
   var hasher = createHash(method)
+  .once('error', finish)
+  .once('readable', onReadable)
 
   stream
   .once('error', finish)
   .pipe(hasher)
-
-  hasher
-  .once('error', finish)
-  .once('readable', onReadable)
 
   function onReadable() {
     finish(null, this.read())
