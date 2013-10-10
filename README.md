@@ -1,4 +1,4 @@
-# Hash Stream [![Build Status](https://travis-ci.org/jonathanong/hash-stream.png)](https://travis-ci.org/jonathanong/hash-stream)
+# Hash Stream [![Build Status](https://travis-ci.org/stream-utils/hash-stream.png)](https://travis-ci.org/stream-utils/hash-stream)
 
 Simple wrapper around `crypto.createHash()` for files and streams.
 

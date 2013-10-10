@@ -11,11 +11,11 @@
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "https://github.com/jonathanong/hash-stream.git"
+    "url": "https://github.com/stream-utils/hash-stream.git"
   },
   "bugs": {
     "mail": "me@jongleberry.com",
-    "url": "https://github.com/jonathanong/hash-stream/issues"
+    "url": "https://github.com/stream-utils/hash-stream/issues"
   },
   "devDependencies": {
     "mocha": "*"
