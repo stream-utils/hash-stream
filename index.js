@@ -1,7 +1,7 @@
 var fs = require('fs')
 var createHash = require('crypto').createHash
 
-module.exports = function (stream, method, callback) {
+module.exports = function (stream, method, done) {
   if (typeof stream === 'string')
     stream = fs.createReadStream(stream)
 
@@ -13,6 +13,10 @@ module.exports = function (stream, method, callback) {
   .once('error', finish)
   .pipe(hasher)
 
+  return function (fn) {
+    done = fn
+  }
+
   function onReadable() {
     finish(null, this.read())
   }
@@ -21,7 +25,9 @@ module.exports = function (stream, method, callback) {
     stream.removeListener('error', finish)
     hasher.removeListener('error', finish)
     hasher.removeListener('readable', onReadable)
-    callback(err, hash)
-    stream = hasher = null
+    process.nextTick(function () {
+      done(err, hash)
+      stream = hasher = null
+    })
   }
 }
