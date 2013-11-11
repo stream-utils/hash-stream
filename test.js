@@ -2,6 +2,7 @@ var fs = require('fs')
 var crypto = require('crypto')
 var path = require('path')
 var assert = require('assert')
+var co = require('co')
 
 var getHash = require('./')
 
@@ -26,5 +27,19 @@ describe('Hash Stream', function () {
       assert.equal(res.toString('hex'), hash)
       done()
     })
+  })
+
+  it('should work as a yieldable with a stream', function (done) {
+    co(function* () {
+      var res = yield getHash(filename, 'sha256')
+      assert.equal(res.toString('hex'), hash)
+    })(done)
+  })
+
+  it('should work as a yieldable with a stream', function (done) {
+    co(function* () {
+      var res = yield getHash(fs.createReadStream(filename), 'sha256')
+      assert.equal(res.toString('hex'), hash)
+    })(done)
   })
 })
