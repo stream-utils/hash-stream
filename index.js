@@ -25,9 +25,7 @@ module.exports = function (stream, method, done) {
     stream.removeListener('error', finish)
     hasher.removeListener('error', finish)
     hasher.removeListener('readable', onReadable)
-    process.nextTick(function () {
-      done(err, hash)
-      stream = hasher = null
-    })
+    done(err, hash)
+    stream = hasher = null
   }
 }
