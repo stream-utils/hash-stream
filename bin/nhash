@@ -5,7 +5,7 @@ var path = require('path');
 
 var usage = 'Usage: nhash [algorithm] [filename]\r\n';
 var args = process.argv.slice(2);
-if (args.length <= 2) {
+if (args.length < 2) {
   console.log(usage);
   process.exit(0);
 };
@@ -16,5 +16,5 @@ getHash(filename, algorithm, function(err, data) {
   if (err) 
     console.log(err);
   else
-    console.log(data.toString('hex'));
+    console.log('output: ', data.toString('hex'));
 })
