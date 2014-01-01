@@ -17,6 +17,9 @@
     "mail": "me@jongleberry.com",
     "url": "https://github.com/stream-utils/hash-stream/issues"
   },
+  "dependencies": {
+    "commander": "*"
+  },
   "devDependencies": {
     "co": "*",
     "gnode": "*",
