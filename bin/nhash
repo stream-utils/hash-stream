@@ -12,7 +12,6 @@ program
   .option('-e --encoding <hex>', 'the encoding of output', 'hex')
   .parse(process.argv);
 
-var filename = path.resolve(program.args[0]);
 var encoding = program.encoding;
 var algorithm = program.algorithm;
 
@@ -29,7 +28,7 @@ if (!Buffer.isEncoding(encoding)) {
   program.help();
 };
 
-getHash(filename, algorithm, function(err, data) {
+getHash(program.args[0], algorithm, function(err, data) {
   if (err) 
     console.error(err);
   else
