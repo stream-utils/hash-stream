@@ -4,9 +4,10 @@ var path = require('path');
 var crypto = require('crypto');
 var getHash = require('../');
 var program = require('commander');
+var ver = require('../package.json').version;
 
 program
-  .version('0.1.1')
+  .version(ver)
   .option('-a --algorithm <sha1>', 'the hash alorithm', 'sha1')
   .option('-e --encoding <hex>', 'the encoding of output', 'hex')
   .parse(process.argv);
