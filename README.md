@@ -22,6 +22,21 @@ getHash('image.png', 'sha256', function (err, hash) {
 })
 ```
 
+## [CLI](http://en.wikipedia.org/wiki/Command-line_interface)
+
+You can use `nhash` to hash a file and get the output instantly. The usage options are simple:
+```
+$ nhash --help
+Usage: nhash [options] [file]
+
+Options:
+
+  -h, --help              output usage information
+  -V, --version           output the version number
+  -a, --algorithm <sha1>  the hash alorithm
+  -e, --encoding <hex>    the encoding of output
+```
+
 ## License
 
 The MIT License (MIT)
