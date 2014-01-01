@@ -2,6 +2,12 @@
 
 Simple wrapper around `crypto.createHash()` for files and streams.
 
+## Installation
+
+```shell
+$ npm install hash-stream
+```
+
 ## API
 
 ```js
