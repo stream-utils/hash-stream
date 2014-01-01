@@ -1,0 +1,36 @@
+#!/usr/bin/env node
+
+var path = require('path');
+var crypto = require('crypto');
+var getHash = require('../');
+var program = require('commander');
+
+program
+  .version('0.1.1')
+  .option('-a --algorithm <sha1>', 'the hash alorithm', 'sha1')
+  .option('-e --encoding <hex>', 'the encoding of output', 'hex')
+  .parse(process.argv);
+
+var filename = path.resolve(program.args[0]);
+var encoding = program.encoding;
+var algorithm = program.algorithm;
+
+if (!program.args || program.args.length === 0)
+  program.help();
+
+if (crypto.getHashes().indexOf(algorithm) == -1) {
+  console.error('  Incorrect algorithm: ', algorithm);
+  program.help();
+};
+
+if (!Buffer.isEncoding(encoding)) {
+  console.error('  Incorrect encoding type: ', encoding);
+  program.help();
+};
+
+getHash(filename, algorithm, function(err, data) {
+  if (err) 
+    console.error(err);
+  else
+    console.log(data.toString(encoding));
+})
