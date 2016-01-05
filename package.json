@@ -10,8 +10,8 @@
     "native-or-bluebird": "1"
   },
   "devDependencies": {
-    "bluebird": "3.1.1",
-    "mocha": "2.3.4",
+    "bluebird": "^3.1.1",
+    "mocha": "^2.3.4",
     "istanbul": "0"
   },
   "bin": "./bin/nhash",
